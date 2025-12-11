@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HÃY NUÔI TÔI 🍜</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #667eea;
+            margin-bottom: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .warning strong {
+            color: #d63031;
+        }
+
+        .intro {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .intro h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 2em;
+        }
+
+        .intro p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .benefits {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefits h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 2em;
+        }
+
+        .benefits ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .benefits li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+            font-size: 1.1em;
+        }
+
+        .benefits li::before {
+            content: "✓ ";
+            color: #00b894;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+
+        .packages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .package {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .package:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .package.premium {
+            border: 3px solid #ffd700;
+            background: linear-gradient(135deg, #fff9e6 0%, #ffffff 100%);
+        }
+
+        .package.premium::before {
+            background: linear-gradient(90deg, #ffd700, #ffed4e);
+            height: 8px;
+        }
+
+        .package-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .package h3 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .package.premium h3 {
+            color: #d4af37;
+        }
+
+        .package .price {
+            font-size: 2.5em;
+            color: #2d3436;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .package .description {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 1em;
+            font-style: italic;
+        }
+
+        .package ul {
+            list-style: none;
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .package li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .package li:last-child {
+            border-bottom: none;
+        }
+
+        .qr-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .qr-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .qr-placeholder {
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+            background: #f8f9fa;
+            border: 3px dashed #667eea;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            color: #666;
+            flex-direction: column;
+        }
+
+        .qr-placeholder .icon {
+            font-size: 4em;
+            margin-bottom: 15px;
+        }
+
+        .bank-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+
+        .bank-info p {
+            margin: 10px 0;
+        }
+
+        .bank-info strong {
+            color: #667eea;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            margin-top: 30px;
+        }
+
+        footer p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+
+        .joke-box {
+            background: #fff9e6;
+            border: 2px solid #ffd700;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            font-style: italic;
+            color: #d4af37;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .intro h2, .benefits h2, .qr-section h2 {
+                font-size: 1.5em;
+            }
+
+            .packages {
+                grid-template-columns: 1fr;
+            }
+
+            .package {
+                padding: 20px;
+            }
+
+            .qr-placeholder {
+                width: 250px;
+                height: 250px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            header {
+                padding: 30px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .package .price {
+                font-size: 2em;
+            }
+
+            .qr-placeholder {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍜 HÃY NUÔI TÔI 🍜</h1>
+            <p class="subtitle">Dự án phi lợi nhuận (nhưng lợi cơm) 😂</p>
+            <div class="warning">
+                <strong>🎪 THÔNG BÁO QUAN TRỌNG:</strong> Dự án này đã được chứng nhận bởi... chính tôi!<br>
+                Độ uy tín: ⭐⭐⭐⭐⭐ (5 sao do tôi tự đánh giá) 😎<br>
+                <em>100% tiền sẽ đi vào mục đích chính đáng: Nuôi tôi! Không mục đích nào chính đáng hơn!</em>
+            </div>
+        </header>
+
+        <section class="intro">
+            <h2>🎭 Tại Sao Phải Nuôi Tôi?</h2>
+            <p>Chào mừng bạn đến với trang web kỳ lạ nhất internet! Đây là nơi tôi chính thức tuyên bố rằng:</p>
+            <p><strong>"Tôi không biết nấu ăn, nhưng tôi biết ăn rất giỏi!"</strong> 🍔🍕🍜</p>
+            <div class="joke-box">
+                💡 Fun Fact: Tôi từng sống 3 ngày bằng mì tôm và nước mắt (nước mắt của tôi, không phải nước luộc mì nhé!)<br>
+                🎯 Mục tiêu: Kiếm đủ tiền để không phải ăn mì tôm liên tục 3 ngày!<br>
+                🤣 Câu hỏi thường gặp: "Sao không đi làm?" - Đáp án: "Đang làm mà, đang làm web này đây!"
+            </div>
+            <div class="joke-box" style="margin-top: 15px;">
+                📢 <strong>KHẨN CẤP:</strong> Bụng tôi đang kêu cứu với tần suất 10 tiếng/phút!<br>
+                🆘 <em>Đã có 0 người hưởng ứng, hãy là người đầu tiên giải cứu!</em><br>
+                💪 <strong>Slogan:</strong> "Một bát phở - Một nụ cười - Một tương lai tươi sáng hơn!"<br>
+                🎪 <em>(Tương lai của ai? Dĩ nhiên là của tôi rồi!)</em>
+            </div>
+        </section>
+
+        <section class="benefits">
+            <h2>📊 Cam Kết Minh Bạch 100% (Hoặc Hơn)</h2>
+            <ul>
+                <li>✅ <strong>Sao Kê Đầy Đủ:</strong> Mỗi đồng nhận được sẽ được công khai chi tiết - từ bát phở đến ly trà sữa. Bạn sẽ biết tôi ăn gì, uống gì, thậm chí cả loại rau nào tôi bỏ ra! 🥬 <em>(Spoiler: tôi bỏ hết rau ra)</em></li>
+                <li>✅ <strong>Báo Cáo Hàng Tháng:</strong> Có ảnh minh chứng (với góc nghiêng nghệ thuật 45 độ như food blogger), có video review món ăn (kèm ASMR ăn uống nghe sướng tai) 📸 <em>Lưu ý: 80% là ảnh, 20% là chữ, 100% là đói!</em></li>
+                <li>✅ <strong>Live Stream Ăn Uống:</strong> Gói Premium sẽ được xem tôi ăn trực tiếp - đảm bảo không fake, không lừa đảo, 100% real! 🎥 <em>Có thể sẽ có tiếng cười khúc khích vì quá ngon!</em></li>
+                <li>✅ <strong>Biên Lai Điện Tử:</strong> Mỗi bữa ăn đều có hóa đơn đỏ (hoặc bill grabfood, tùy tâm trạng và độ lười) 🧾 <em>Đã trừ thuế VAT... ý tôi là trừ phí ship!</em></li>
+                <li>✅ <strong>Audit Hàng Quý:</strong> Kiểm toán bởi chính tôi và cái bụng tôi (2 chứng nhân đáng tin cậy nhất) 🔍 <em>Bụng tôi không bao giờ nói dối!</em></li>
+            </ul>
+            <div class="joke-box">
+                🤣 Lưu ý: Tôi ăn nhiều hơn gấu trúc nhưng ít hơn khủng long. Đó là một khoảng khá an toàn!<br>
+                💡 Thống kê: 90% số tiền vào bụng, 5% vào ảnh story, 5% còn lại... cũng vào bụng!
+            </div>
+            <div class="joke-box" style="margin-top: 15px;">
+                📈 <strong>Sao Kê Mẫu Tháng 11/2024:</strong><br>
+                • Phở bò: 45K (Đã ăn, ngon, đúng vị miền Bắc)<br>
+                • Cơm tấm: 35K (Ăn no, bỏ dưa, thêm trứng)<br>
+                • Trà sữa: 40K (Size L, đường 50%, đá 100% slay)<br>
+                • Mì tôm: 7K x 15 = 105K (Những ngày cuối tháng đen tối)<br>
+                • Nước lọc: 0đ (Cảm ơn công ty đã cho free nước)<br>
+                💰 <strong>Tổng chi:</strong> 225K | <strong>Tổng thu:</strong> 0đ | <strong>Tình trạng:</strong> Đói lắm 😭
+            </div>
+        </section>
+
+        <section class="packages">
+            <div class="package">
+                <div class="package-icon">🍞</div>
+                <h3>GÓI CƠ BẢN</h3>
+                <div class="price">10K</div>
+                <p class="description">"Đủ sống qua ngày" Edition</p>
+                <ul>
+                    <li>🍜 1 tô mì tôm/ngày <em>(Nâng cấp từ ăn không sang ăn có)</em></li>
+                    <li>💧 Nước lọc miễn phí <em>(Từ máy lọc công cộng, vị thanh mát tự nhiên)</em></li>
+                    <li>📝 Nhận 1 lời cảm ơn chân thành <em>(Viết tay trên giấy tờ rơi)</em></li>
+                    <li>🎭 Xem story ăn mì tôm sướt mướt <em>(Góc quay nghệ thuật 360°)</em></li>
+                    <li>💌 Được nhắc đến trong tâm tư <em>(Không công khai)</em></li>
+                </ul>
+                <div class="joke-box">
+                    🎪 Mì tôm vị tôm chua cay nha! (Hoặc bất cứ vị nào còn trong tủ)<br>
+                    ⚠️ <strong>Warning:</strong> Gói này giúp tôi sống sót nhưng không giúp tôi phát triển!<br>
+                    🤔 <em>"Với 10K, bạn đã cứu được 1 sinh mạng... khỏi bị đói!"</em>
+                </div>
+            </div>
+
+            <div class="package">
+                <div class="package-icon">🍱</div>
+                <h3>GÓI TIÊU CHUẨN</h3>
+                <div class="price">50K</div>
+                <p class="description">"Cuộc Sống Khá Hơn" Edition</p>
+                <ul>
+                    <li>🍚 1 bữa cơm văn phòng đầy đủ <em>(Có cả chân gà ngâm sả ớt!)</em></li>
+                    <li>☕ 1 ly cà phê sữa đá <em>(Hoặc trà đá nếu quán hết cà phê)</em></li>
+                    <li>📸 Nhận ảnh sao kê chi tiết <em>(Chụp bằng iPhone... ý tôi là điện thoại)</em></li>
+                    <li>💌 Được tag tên trên story <em>(Full HD, có sticker cute)</em></li>
+                    <li>🎁 Bonus: 1 câu joke độc quyền <em>(Bảo hành cười trong 5 giây)</em></li>
+                    <li>🎵 Được request 1 bài hát hát karaoke <em>(Giọng không bảo hành)</em></li>
+                </ul>
+                <div class="joke-box">
+                    🎯 Gói này đủ để tôi không bị đồng nghiệp thương hại!<br>
+                    📊 <strong>Thống kê:</strong> 99% người chọn gói này vì... gói Cơ Bản quá buồn!<br>
+                    💬 <em>"Cơm văn phòng mà như buffet 5 sao vậy!"</em> - Khách hàng ảo review<br>
+                    🏆 <strong>Achievement Unlocked:</strong> "Người Bạn Tốt Bụng" Badge!
+                </div>
+            </div>
+
+            <div class="package premium">
+                <div class="package-icon">👑</div>
+                <h3>GÓI PREMIUM VIP</h3>
+                <div class="price">100K+</div>
+                <p class="description">"Big Boss" Edition ⭐</p>
+                <ul>
+                    <li>🍕 1 bữa ăn sang chảnh tự chọn <em>(Pizza, Sushi, hoặc... 10 tô phở!)</em></li>
+                    <li>🧋 Trà sữa size L topping full <em>(Trân châu, thạch, pudding, thêm cả kem cheese!)</em></li>
+                    <li>📹 Video review món ăn HD <em>(Quay bằng gimbal, dựng có nhạc nền)</em></li>
+                    <li>🎬 Được xuất hiện trong video <em>(Có credit tên to đùng ở cuối clip)</em></li>
+                    <li>📊 Báo cáo tài chính Excel đầy đủ <em>(Có biểu đồ tròn, cột, đường!)</em></li>
+                    <li>🏆 Danh hiệu "Nhà Tài Trợ Vàng" <em>(Được in trên banner ảo)</em></li>
+                    <li>💝 Nhận quà handmade <em>(Vẽ tranh chân dung bằng mì tôm... hoặc bằng bút chì nếu mì hết)</em></li>
+                    <li>📞 Hotline ưu tiên <em>(Trả lời trong vòng 24h... hoặc khi tỉnh giấc)</em></li>
+                    <li>🎤 Được đặt tên cho món ăn tiếp theo <em>("Phở của Anh Hùng", "Cơm của Người Hùng")</em></li>
+                </ul>
+                <div class="joke-box">
+                    ⚡ KHUYẾN MÃI: Tặng kèm 1 bài thơ tán dương công đức! (Không vần cũng được)<br>
+                    🎭 <strong>Testimonial:</strong> "Tôi đã nuôi anh ấy và cuộc đời tôi... vẫn bình thường!" - Anonymous<br>
+                    💎 <em>Level này là level "Sugar Daddy/Mommy" rồi đó!</em><br>
+                    🌟 Bonus: Được gọi bằng "Boss" trong mọi tin nhắn!<br>
+                    🎪 <strong>Fun Fact:</strong> 100K có thể mua được: 14 tô phở HOẶC 10 ly trà sữa HOẶC 1 trái tim tôi!
+                </div>
+            </div>
+        </section>
+
+        <section class="qr-section">
+            <h2>💰 QUÉT MÃ ĐỂ NUÔI TÔI</h2>
+
+            
+            <div class="qr-placeholder">
+                <div class="icon">🏦</div>
+                <p><strong>MB Bank QR Code</strong></p>
+                <p style="font-size: 0.9em;">Đặt mã QR của bạn vào đây</p>
+            </div>
+
+            <div class="bank-info">
+                <p><strong>Ngân hàng:</strong> MB Bank (Quân Đội)</p>
+                <p><strong>Số tài khoản:</strong> [Số tài khoản của bạn]</p>
+                <p><strong>Chủ tài khoản:</strong> [Tên của bạn]</p>
+                <p><strong>Nội dung CK:</strong> NUOI + [Tên của bạn]</p>
+                <p style="font-style: italic; color: #888; margin-top: 15px;">
+                    <em>* Lưu ý: Nếu chuyển khoản thiệt thì... tôi cũng nhận! 😂</em><br>
+                    <em>** Nhưng mà đừng nha, web này để chill thôi!</em>
+                </p>
+            </div>
+
+            <div class="joke-box" style="margin-top: 20px;">
+                🎪 <strong>Tip Pro:</strong> Nếu chuyển nhầm, đừng lo! Tiền sẽ được dùng để... mua thêm mì tôm! 
+                <br>Không có chính sách hoàn tiền vì... tôi đã ăn mất rồi! 🍜<br><br>
+                
+                🎭 <strong>Câu Hỏi Thường Gặp:</strong><br>
+                ❓ "Chuyển 100K có được gì không?" - <em>Có, được 100K trong bụng tôi!</em><br>
+                ❓ "Có hoá đơn đỏ không?" - <em>Có, hoá đơn đỏ của quán cơm!</em><br>
+                ❓ "Có giấy tờ pháp lý không?" - <em>Có giấy vệ sinh... à nhầm, có bill grabfood!</em><br>
+                ❓ "Tin được không?" - <em>Tin như tin răng ăn đau răng!</em><br><br>
+                
+                💫 <strong>Disclaimer cuối cùng:</strong> Website này 100% để vui, 0% để kiếm tiền thật!<br>
+                Nếu bạn thật sự chuyển tiền thì... wow bạn tốt thật nhưng tôi sẽ thấy có lỗi! 😅
+            </div>
+        </section>
+
+        <footer>
+            <p>💙 Cảm ơn bạn đã ghé thăm trang web hài hước nhất hệ mặt trời!</p>
+            <p>🎭 Nhớ rằng: Đây chỉ là trang giải trí, đừng thật sự chuyển tiền nhé!</p>
+            <p>📧 Liên hệ: <strong>haynuoi.toi@gmail.fake</strong> (Email này cũng fake luôn 😄)</p>
+            <p style="margin-top: 20px; font-size: 0.9em;">
+                Made with 💜 và 🍜 | © 2024 Dự Án Nuôi Tôi - All Rights Reserved (Nhưng chẳng có gì để reserve cả!)
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
